@@ -12,42 +12,72 @@ Massive thank you to the original FrostyToolsuite team, you can check them here:
 - **Reference Library** — Browse and view base and custom payloads from various Frostbite titles
 - **Preset Manager** — Browse and insert user-saved presets containing sets of various commands
 
+<img width="2100" height="1240" alt="image222" src="https://github.com/user-attachments/assets/b651aab0-42a0-40e6-8b9b-44f916c9d088" />
+
+## TODO:
+- Fix Dingo mode logic as its incorrect and needs proper polishing (Type Extractor)
+- Fully implement Dead Space and Need For Speed Heat support for live value reading
+- Fix a bug where the bcrypt.dll gets copied after the user hits ok, should be before
+- Fix an issue where the green highlight may disappear when deleting spaces
+- Finish DictionaryWindow logic to support more dev commands
 
 ## License
 The Content, Name, Code, and all assets are licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.
 
-## Building from Source
+# Building from Source
 
-### Requirements
-- Visual Studio 2022 (MSVC)
+## Requirements
+- Visual Studio 2022 with C++ workload
 - CMake 3.20+
 - Qt 6.10 Win7 Backport (pre-built, see below)
 - QScintilla 2.14.1
 - OpenSSL 3.x
 
-### Quick Start (Debug)
+## Quick Start (Debug)
 
-1. Download the pre-built Qt 6.10 Win7 backport:
-   [https://github.com/qr243vbi/qt6windows7/releases](https://github.com/qr243vbi/qt6windows7/releases/tag/v6.10.0_x86_64)
-   Download Qt_6.10.0_x86_64.zip and extract it anywhere, e.g. C:\Qt_6.10_Backport
+### 1. Download Qt 6.10 Win7 Backport
+Download the pre-built backport from https://github.com/qr243vbi/qt6windows7/releases
 
-2. Build QScintilla 2.14.1 against it:
-   - Download QScintilla 2.14.1 source from https://riverbankcomputing.com/software/qscintilla
-   - Open x64 Native Tools Command Prompt for VS 2022
-   - cd <qscintilla_source>\src
-   - <your_backport_path>\bin\qmake.exe qscintilla.pro
-   - nmake release
-   - Copy release\qscintilla2_qt6.lib into <your_backport_path>\lib
-   - Copy release\qscintilla2_qt6.dll into <your_backport_path>\bin
+Download `Qt_6.10.0_x86_64.zip` and extract it anywhere (spaces in the path may cause issues with qmake on some systems), e.g. `C:\Qt_6.10_Backport`
 
-3. Install OpenSSL 3.x:
-   https://slproweb.com/products/Win32OpenSSL.html
-   (Install it to the default location)
+### 2. Build QScintilla 2.14.1
+Download QScintilla 2.14.1 source from https://riverbankcomputing.com/software/qscintilla
 
-4. Edit CMakeUserPresets.json:
-   Set QT_PATH in Qt-Default-Dynamic to your backport extraction path
+Open **x64 Native Tools Command Prompt for VS 2022** (required for all commands below), then run:
 
-5. Open the project in Visual Studio 2022, select Qt-Debug preset, build.
+```
+cd <qscintilla_source>\src
+```
+> This is the `src` subfolder inside the extracted QScintilla zip.
+
+```
+<your_backport_path>\bin\qmake.exe qscintilla.pro
+nmake release
+```
+
+Then copy the output files:
+- Copy `release\qscintilla2_qt6.lib` into `<your_backport_path>\lib`
+- Copy `release\qscintilla2_qt6.dll` into `<your_backport_path>\bin`
+
+### 3. Install OpenSSL 3.x
+Download and install from https://slproweb.com/products/Win32OpenSSL.html
+
+Install to the **default location**.
+
+### 4. Configure CMakeUserPresets.json
+Open `CMakeUserPresets.json` and update **both** the `QT_PATH` and `QTDIR` values under the `Qt-Default-Dynamic` preset to match your backport extraction path:
+
+```json
+"environment": {
+    "QTDIR": "C:/your/backport/path"
+},
+"cacheVariables": {
+    "QT_PATH": "C:/your/backport/path"
+}
+```
+
+### 5. Build
+Open the project in Visual Studio 2022, select the `Qt-Debug` preset, and build.
 
 ### Release Build (Static, single exe)
 See BUILD_STATIC.md for instructions on producing a fully static executable.
