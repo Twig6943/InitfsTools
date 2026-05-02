@@ -1053,7 +1053,7 @@ void TypeExtractorWindow::beginMemoryDump(const QString& exePath, DWORD override
             m_lblStatus->setText(
                 QString("Waiting for %1 to start... (%2/30)").arg(exeNameOnly).arg(attempt));
             QCoreApplication::processEvents();
-            Sleep(1000); // Windows Sleep — 1s, GUI remains responsive via processEvents above
+            Sleep(2000); // Windows Sleep — 2s, GUI remains responsive via processEvents above
             targetPid = findPid();
             processWasWaited = true;
         }
@@ -2903,7 +2903,7 @@ void TypeExtractorWindow::onLiveValuesChanged(int state)
             int ret = QMessageBox::question(
                 this,
                 tr("Scan Live Values"),
-                tr("This will scan process memory to find live instances of each type.\n\nContinue?"),
+                tr("This will pause and scan process memory to find live instances of each type.\n\nContinue?"),
                 QMessageBox::Ok | QMessageBox::Cancel,
                 QMessageBox::Ok);
 
@@ -3276,7 +3276,7 @@ void TypeExtractorWindow::onDumpFromMemory()
         "1. Launch %1\n"
         "2. Wait for the game to fully load\n"
         "3. Click OK to begin memory dump\n\n"
-        "The process may take several minutes. Continue?")
+        "The process will pause while scanning for type info. Continue?")
         .arg(exeName);
 
     int ret = QMessageBox::information(this,
@@ -3444,7 +3444,7 @@ QString TypeExtractorWindow::buildTypeText(const UITypeItem& t) const
 }
 
 // ============================================================
-// buildCommandsText  — full port of C# ExtractCommands()
+// buildCommandsText
 // ============================================================
 QString TypeExtractorWindow::buildCommandsText() const
 {

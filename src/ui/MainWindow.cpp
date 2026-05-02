@@ -234,49 +234,52 @@ static inline long SCIP(QsciScintilla* e, unsigned int msg, long w, const char* 
 // Startup text
 // ============================================================
 const QString MainWindow::k_startupText =
-"!! Pooka's Initfs Tools v2.00 !!\n\n"
-"==HOW TO USE==\n\n"
-"LOAD INITFS: Click 'Load Initfs' to select an Initfs file\n"
-"• The name of the Initfs file does not matter\n"
-"• All Initfs obfuscation types can be loaded\n"
-"• Initfs files from other platforms (PlayStation, Xbox, etc) can also be loaded\n"
-"• Clicking this button will also automatically create a .bak copy of the Initfs file just in case something happens\n\n"
-"INITFS EDITOR: Once an Initfs file has been successfully loaded, there are many things you can do to it:\n"
-"• All of the payloads inside the loaded Initfs file are shown in the left window\n"
-"• You will also notice that two buttons at the top are now clickable:\n"
-"     - Export Payload: Allows you to export the selected payload to a chosen directory in the same file format\n"
-"     - Import Payload: Allows you to import contents from any file to overwrite the selected payload\n"
+"# Pooka's InitFS Tools v2.00 Release #\n\n"
+"[HOW TO USE]\n\n"
+"InitFS Tools is a powerful tool that allows you to modify an InitFS file. This can be used to do the following:\n"
+"• Enable new/hidden features in certain games\n"
+"• Understanding and modifying game functions such as the default loaded level\n"
+"• Understanding and modifying graphic settings across multiple platforms\n"
+"• Setting default values such as FOV, difficulty, and many more\n"
+"Need additional help? Click the 'Wiki' button found in the \"Help\" tab to learn more about using this tool effectively! And read below:\n\n"
+"\"File/Edit Tab + General Info\"\n\n"
+"LOAD INITFS: Click 'Load Initfs' to select an InitFS file (or click the big button)\n"
+"• All InitFS obfuscation types can be loaded\n"
+"• InitFS files from other platforms (PS, XB, etc) can also be loaded\n"
+"• Clicking this button will also automatically create a cached copy of the loaded InitFS file in the /Caches folder (don't delete!)\n\n"
+"INITFS EDITOR: Once an InitFS file has been successfully loaded, there are many things you can do to it:\n"
+"• 'Payload List' - All of the payloads inside the loaded InitFS file are shown in the left panel\n"
 "• When right-clicking on a payload, four options will show up:\n"
-"     - Add Payload: Allows you to create a custom payload that can be saved\n"
-"     - Rename Payload: Allows you to rename the selected payload\n"
-"     - Remove Payload: Allows you to delete a payload from the list\n"
-"     - Revert Payload: Allows you to restore an existing payload to its default state\n"
-"• Left-click on a payload to view its contents in the right window\n"
-"• Press the 'Ctrl' + 'F' keys to open a search dialog to find a specific word in the payload\n"
-"• You can add, delete, or modify any of the text inside the payloads, which will be automatically saved in the editor\n\n"
-"SAVE INITFS: Click 'Save Initfs' to apply and write any changes to a chosen directory\n"
-"• The following Obfuscation types that work are shown here:\n"
-"     - Encrypted: Any Initfs file with an 'encrypted' header will write properly\n"
-"     - Obfuscated: Any Initfs file that looks scribbled in HEX will write properly\n"
-"     - Deobfuscated: Any Initfs file whose contents are readable will write properly\n"
-"• All Initfs files from consoles will be able to read the new changes properly and will launch without issues\n"
-"• Having some games that just don't launch? There is a solution; Upgrade to Windows 11 - this will fix the following games:\n"
-"     - Battlefield 3 (PC)\n"
-"     - Battlefield 4 (PC)\n"
-"     - Battlefield Hardline (PC)\n"
-"     - Dragon Age: Inquisition (PC)\n"
-"     - Garden Warfare 1 (PC)\n"
-"     - Need For Speed: Rivals (PC)\n"
-"     - Need For Speed (2015) (PC)\n"
-"     - Need For Speed: Edge (PC)\n"
+"     - 'Add Payload': Allows you to create a custom payload that can be saved\n"
+"     - 'Import Payload': Allows you to import contents from any file to overwrite the selected payload\n"
+"     - 'Export Payload': Allows you to export the selected payload to a chosen directory in the same file format\n"
+"     - 'Rename Payload': Allows you to rename the selected payload\n"
+"     - 'Copy Payload Name': Allows you to copy the full name of the payload\n"
+"     - 'Revert Payload': Allows you to restore the selected payload back to its default state\n"
+"     - 'Remove Payload': Allows you to delete a payload from the list\n"
+"• 'Payload Contents' - Left-click on a payload to view its contents in the right panel\n"
+"• Press the 'Ctrl' + 'F' keys to open a dialog to find or replace a specific word in the current payload or across all payloads\n"
+"• You can add, delete, or modify any of the text inside the Payload Contents panel, which will be automatically saved in the editor\n"
+"• You can also switch between different views to your liking for both the payload list and payload contents panels\n\n"
+"SAVE INITFS: Click 'Save Initfs' to apply and write any changes to the currently loaded InitFS file\n\n"
+"SAVE INITFS AS: Click 'Save Initfs As' to apply and write any changes to a chosen directory\n"
+"• All InitFS files will be able to read the new changes properly and will launch without issues\n"
 "• However, the following games are not supported in any way:\n"
-"     - PC games with EA Anticheat: No CryptBase.dll support, no Initfs modding :(\n\n"
-"SAVE INITFS AS RAW: Click 'Save Initfs As Raw' to write the loaded Initfs file into a readable text document\n"
-"• This document will include every payload in the Initfs file, and all of its contents\n"
+"     - PC games with EA Anticheat: No bcrypt.dll support, no InitFS modding :(\n\n"
+"GENERATE RAW INITFS: Click 'Generate Raw Initfs' to write the loaded InitFS file into a readable text document\n"
+"• This document will include every payload in the InitFS file, and all of its contents\n"
 "• The document will also generate a header that is filled with useful information\n"
 "• Note that this is just for archiving/documenting; no game will ever be able to read a raw file\n\n"
-"DICTIONARY: Click 'Dictionary' to open a window specifically designed for viewing commands from multiple Initfs files\n\n"
-"Found a bug or have a suggestion? Reach out to me on Discord: pookatv, otherwise, enjoy!";
+"RESTORE INITFS: Click 'Restore Initfs' to revert all changes made in the loaded InitFS file\n"
+"• You can either revert all changes made in the current session, or restore the InitFS file entirely from the cache\n\n"
+"CLOSE INITFS: Click 'Close Initfs' to go back to this very homepage!\n\n"
+"\"Tools Tab\"\n\n"
+"DIFF CHECK: Click 'Diff Check' to compare all contents between one InitFS file and another (must load an InitFS file first!)\n\n"
+"TYPE EXTRACTOR: Click 'Type Extractor' to view all types from an EXE or FrostyEditor SDK, including all existing commands found in-game\n\n"
+"DICTIONARY: Click 'Dictionary' to open a window specifically designed for viewing all commands and comments from multiple InitFS files\n\n"
+"REFERENCE LIBRARY: Click 'Reference Library' to browse and view base and custom-made payloads from various titles over the years\n\n"
+"PRESET MANAGER: Click 'Preset Manager' to browse and insert user-saved presets containing sets of commands (also found in /Presets)\n\n"
+"[Found a bug or have a suggestion? Reach out to me on Discord: pookatv, otherwise, enjoy!]";
 
 // ============================================================
 // Constructor / Destructor
@@ -8088,7 +8091,21 @@ void MainWindow::onPresets()
     m_presetWindow->activateWindow();
 }
 
-void MainWindow::onAbout() { QMessageBox::information(this, "About", "Initfs Tools\nMade by Pooka - v2.00"); }
+void MainWindow::onAbout()
+{
+    QMessageBox msgBox(this);
+    msgBox.setWindowTitle("About");
+    msgBox.setIcon(QMessageBox::Information);
+    msgBox.setText(
+        "Initfs Tools v2.00<br>"
+        "Made by Pooka and Claude<br>"
+        "Written and Optimized in C++<br>"
+        "<a href='https://github.com/pookatv/InitfsTools'>https://github.com/pookatv/InitfsTools</a>"
+    );
+    msgBox.setTextFormat(Qt::RichText);
+    msgBox.exec();
+}
+
 // ============================================================
 // Find
 // ============================================================
