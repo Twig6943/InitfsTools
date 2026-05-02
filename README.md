@@ -66,16 +66,30 @@ Download and install from https://slproweb.com/products/Win32OpenSSL.html
 Install to the **default location**.
 
 ### 4. Configure CMakeUserPresets.json
-Open `CMakeUserPresets.json` and update **both** the `QT_PATH` and `QTDIR` values under the `Qt-Default-Dynamic` preset to match your backport extraction path:
+Open `CMakeUserPresets.json` and replace all **3 instances** of `<YOUR_QT_BACKPORT_PATH>` with your backport extraction path. The three locations are:
+
+- `QTDIR` under `Qt-Default-Dynamic`
+- `QT_PATH` under `Qt-Default-Dynamic`
+- `PATH` under `Qt-Debug` (the `/bin` entry)
+
+For example, if you extracted to `C:/Qt_6.10_Backport`:
 
 ```json
 "environment": {
-    "QTDIR": "C:/your/backport/path"
+    "QTDIR": "C:/Qt_6.10_Backport"
 },
 "cacheVariables": {
-    "QT_PATH": "C:/your/backport/path"
+    "QT_PATH": "C:/Qt_6.10_Backport"
 }
 ```
+
+and:
+
+```json
+"PATH": "C:/Qt_6.10_Backport/bin;$penv{PATH}"
+```
+
+> Note: Use forward slashes `/` in the JSON file, not backslashes.
 
 ### 5. Build
 Open the project in Visual Studio 2022, select the `Qt-Debug` preset, and build.
