@@ -20,6 +20,7 @@ Massive thank you to the original FrostyToolsuite team, you can check them here:
 - Fix a bug where the bcrypt.dll gets copied after the user hits ok, should be before
 - Fix an issue where the green highlight may disappear when deleting spaces
 - Finish DictionaryWindow logic to support more dev commands
+- Finish InitfsTools Wiki (help wanted!)
 
 ## License
 The Content, Name, Code, and all assets are licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.
