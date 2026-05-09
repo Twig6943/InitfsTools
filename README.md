@@ -19,6 +19,7 @@ Massive thank you to the original FrostyToolsuite team, you can check them here:
 ## TODO:
 - Fix Dingo mode logic as it's incorrect and needs proper polishing (Type Extractor)
 - Fix Squadrons using the wrong mode - should use Walrus (Type Extractor)
+- Fix NFS Payback using the wrong mode - should use Walrus (Type Extractor)
 - Fix Mirror's Edge using the wrong mode - should use Havana (Type Extractor)
 - Fully implement Dead Space and Need For Speed Heat support for live value reading
 - Fix a bug where the bcrypt.dll gets copied after the user hits ok, should be before
@@ -31,7 +32,7 @@ Massive thank you to the original FrostyToolsuite team, you can check them here:
 - Implement "GoTo" default commands
 
 ## COMING SOON:
-- Console Injector — Hooks into a game's console and executes commands remotely (confirmed working in: DelMar, SWBF2, SWBF2015, BFN, GW2, GW1, Need For Speed, NFS Rivals, Mirror's Edge)
+- Console Injector — Hooks into a game's console and executes commands remotely (confirmed working in: DelMar, SWBF2, SWBF2015, BFN, GW2, GW1, NFS Payback, Need For Speed, NFS Rivals, Mirror's Edge)
 
 ## License
 The Content, Name, Code, and all assets are licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.
