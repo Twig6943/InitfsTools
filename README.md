@@ -19,6 +19,7 @@ Massive thank you to the original FrostyToolsuite team, you can check them here:
 ## TODO:
 - Fix Dingo mode logic as it's incorrect and needs proper polishing (Type Extractor)
 - Fix Squadrons using the wrong mode - should use Walrus (Type Extractor)
+- Fix Mirror's Edge using the wrong mode - should use Havana (Type Extractor)
 - Fully implement Dead Space and Need For Speed Heat support for live value reading
 - Fix a bug where the bcrypt.dll gets copied after the user hits ok, should be before
 - Fix an issue where the green highlight may disappear when deleting spaces
