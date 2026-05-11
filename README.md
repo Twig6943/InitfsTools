@@ -24,6 +24,7 @@ Massive thank you to the original FrostyToolsuite team, you can check them here:
 - Fix Dragon Age Inquisition support - only works in 2.0.0-beta2 (Type Extractor)
 - Implement Mass Effect Andromeda support (Type Extractor)
 - Implement PGA Tour support (Type Extractor)
+- Implement Battlefield Hardline support (Type Extractor)
 - Fully implement Dead Space and Need For Speed Heat support for live value reading
 - Fix a bug where the bcrypt.dll gets copied after the user hits ok, should be before
 - Fix an issue where the green highlight may disappear when deleting spaces
@@ -35,7 +36,7 @@ Massive thank you to the original FrostyToolsuite team, you can check them here:
 - Implement "GoTo" default commands
 
 ## COMING SOON:
-- Console Injector — Hooks into a game's console and executes commands remotely (confirmed working in: DelMar, MEA, BF4, SWBF2, SWBF2015, BFN, GW2, GW1, NFS Unbound, NFS Heat, NFS Payback, Need For Speed, NFS Rivals, Mirror's Edge, PGA Tour, DAV, DAI)
+- Console Injector — Hooks into a game's console and executes commands remotely (confirmed working in: DelMar, MEA, BFH, BF4, SWBF2, SWBF2015, BFN, GW2, GW1, NFS Unbound, NFS Heat, NFS Payback, Need For Speed, NFS Rivals, Mirror's Edge, PGA Tour, DAV, DAI)
 
 ## License
 The Content, Name, Code, and all assets are licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.
