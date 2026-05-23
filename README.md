@@ -27,7 +27,7 @@ ISSUE: Some games may not load with a custom initfs file on Windows 10. This wil
 - Implement PGA Tour support (Type Extractor)
 - Implement Battlefield Hardline support (Type Extractor)
 - Fully implement Dead Space and Need For Speed Heat support for live value reading
-- Fix a bug where the bcrypt.dll gets copied after the user hits ok, should be before
+- ~~Fix a bug where the bcrypt.dll gets copied after the user hits ok, should be before~~
 - Fix an issue where the green highlight may disappear when deleting spaces
 - Fix an issue where highlights are invisible (Diff Check)
 - Fix an issue where the dictionary filters stop working (Dictionary)
