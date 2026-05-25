@@ -33,6 +33,7 @@ ISSUE: Some games may not load with a custom initfs file on Windows 10. This wil
 - Fix an issue where the dictionary filters stop working (Dictionary)
 - Finish DictionaryWindow logic to support more dev commands (Dictionary)
 - ~~Fix the program not fully closing when tool windows are active~~
+- Fix an issue where the program crashes if you attempt to load a deleted InitFS file
 - Finish InitfsTools Wiki (help wanted!)
 - Implement localization support for the UI
 - Implement "GoTo" default commands
