@@ -19,7 +19,12 @@ bash /tmp/msvc-wine/install.sh "$WINSDK"
 
 echo "=== Qt for Windows ==="
 aqt install-qt windows desktop 6.10.0 win64_msvc2022_64 -O "$QT_BASE"
-# find "$QTDIR/bin" -name '*.exe' -exec chmod +x {} +
+# Register binfmt_misc so .exe files run through wine automatically
+# (needed for Qt6 AUTOMOC test run which bypasses CMAKE_CROSSCOMPILING_EMULATOR)
+if [ -w /proc/sys/fs/binfmt_misc/register ]; then
+    echo ':WineMZ:M::MZ::/usr/bin/wine:' > /proc/sys/fs/binfmt_misc/register 2>/dev/null || true
+fi
+find "$QTDIR/bin" -name '*.exe' -exec chmod +x {} +
 
 echo "=== OpenSSL 3.5.7 ==="
 curl -fsSL -o /tmp/openssl.zip \
