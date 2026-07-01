@@ -1,4 +1,4 @@
-name: Build InitfsTools (Windows x86-64)
+name: Build (Linux)
 
 on:
   workflow_dispatch:
