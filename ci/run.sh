@@ -9,7 +9,6 @@ QT_BASE="$(dirname "$(dirname "$QTDIR")")"
 export WINDOWS_SDK_PATH="$WINSDK"
 
 WINE=$(command -v wine64 || command -v wine)
-CMAKE_CROSSCOMPILING_EMULATOR="$WINE"
 $WINE wineboot
 
 echo "=== Windows SDK (msvc-wine) ==="
@@ -19,12 +18,14 @@ bash /tmp/msvc-wine/install.sh "$WINSDK"
 
 echo "=== Qt for Windows ==="
 aqt install-qt windows desktop 6.10.0 win64_msvc2022_64 -O "$QT_BASE"
-# Register binfmt_misc so .exe files run through wine automatically
-# (needed for Qt6 AUTOMOC test run which bypasses CMAKE_CROSSCOMPILING_EMULATOR)
-if [ -w /proc/sys/fs/binfmt_misc/register ]; then
-    echo ':WineMZ:M::MZ::/usr/bin/wine:' > /proc/sys/fs/binfmt_misc/register 2>/dev/null || true
-fi
-find "$QTDIR/bin" -name '*.exe' -exec chmod +x {} +
+# Wrap Qt .exe tools with wine scripts (AUTOMOC bypasses CMAKE_CROSSCOMPILING_EMULATOR)
+for f in "$QTDIR/bin/"*.exe; do
+    if [ -f "$f" ] && head -c 2 "$f" | od -An -tx1 | tr -d ' ' | grep -q '^4d5a$'; then
+        mv "$f" "${f}.bin"
+        { echo '#!/bin/bash'; echo "exec /usr/bin/wine '${f}.bin' \"\$@\""; } > "$f"
+        chmod +x "$f"
+    fi
+done
 
 echo "=== OpenSSL 3.5.7 ==="
 curl -fsSL -o /tmp/openssl.zip \
@@ -43,7 +44,6 @@ tar xzf /tmp/qscintilla.tar.gz -C /tmp
 cp "$SRC_DIR/ci/qscintilla/CMakeLists.txt" /tmp/QScintilla_src-2.14.1/
 cmake -B /tmp/QScintilla_src-2.14.1/build -G Ninja \
     -DCMAKE_TOOLCHAIN_FILE="$SRC_DIR/toolchain-linux-winsdk.cmake" \
-    -DCMAKE_CROSSCOMPILING_EMULATOR="$CMAKE_CROSSCOMPILING_EMULATOR" \
     -DCMAKE_PREFIX_PATH="$QTDIR" \
     -DCMAKE_BUILD_TYPE=Release \
     /tmp/QScintilla_src-2.14.1
@@ -55,7 +55,6 @@ echo "=== Build InitfsTools ==="
 cmake -B "$SRC_DIR/out/build" -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_TOOLCHAIN_FILE="$SRC_DIR/toolchain-linux-winsdk.cmake" \
-    -DCMAKE_CROSSCOMPILING_EMULATOR="$CMAKE_CROSSCOMPILING_EMULATOR" \
     -DQT_PATH="$QTDIR" \
     "$SRC_DIR"
 cmake --build "$SRC_DIR/out/build" -j"$(nproc)"

@@ -65,10 +65,9 @@ set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
 
 # Qt6 host tools — the Windows Qt install ships .exe tool binaries that need
-# wine to run on Linux.  Point Qt6*Tools_DIR at the Windows Qt's own tools
-# config and set CMAKE_CROSSCOMPILING_EMULATOR so CMake prefixes tool calls
-# with wine automatically.
-find_program(CMAKE_CROSSCOMPILING_EMULATOR wine)
+# wine to run on Linux.  These are handled by wine wrapper scripts in run.sh,
+# so CMAKE_CROSSCOMPILING_EMULATOR is intentionally not set here (AUTOMOC
+# bypasses it and would try to run .exe files directly).
 
 if(CMAKE_PREFIX_PATH AND NOT Qt6CoreTools_DIR)
     foreach(_qt_tools CoreTools GuiTools WidgetsTools DBusTools)
